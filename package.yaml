@@ -1,0 +1,108 @@
+name:         rpc-gateway
+version:      0.1.0.0
+github:       "jungoai/rpc-gateway"
+license:      BSD-3-Clause
+author:       "Mohsen Nezamolmolki"
+maintainer:   "thelight.mn@gmail.com"
+
+extra-source-files:
+  - README.md
+
+description: Please see the README on GitHub at <https://github.com/jungoai/rpc-gateway#readme>
+
+dependencies:
+  - base >= 4.7 && < 5
+  - rio
+  - warp
+  - wai
+  - http-conduit
+  - network
+  - http-types
+  - aeson
+  - web3
+  - web3-provider
+  - web3-polkadot
+
+ghc-options:
+  - -Wall
+  - -Wcompat
+  - -Widentities
+  - -Wincomplete-record-updates
+  - -Wincomplete-uni-patterns
+  - -Wmissing-export-lists
+  - -Wmissing-home-modules
+  - -Wpartial-fields
+  - -Wredundant-constraints
+
+default-extensions:
+  # https://github.com/commercialhaskell/rio?tab=readme-ov-file#language-extensions
+  - BangPatterns
+  - BinaryLiterals
+  - ConstraintKinds
+  - DataKinds
+  - DefaultSignatures
+  - DeriveDataTypeable
+  - DeriveFoldable
+  - DeriveFunctor
+  - DeriveGeneric
+  - DeriveTraversable
+  - DoAndIfThenElse
+  - EmptyDataDecls
+  - ExistentialQuantification
+  - FlexibleContexts
+  - FlexibleInstances
+  - FunctionalDependencies
+  - GADTs
+  - GeneralizedNewtypeDeriving
+  - InstanceSigs
+  - KindSignatures
+  - LambdaCase
+  - MultiParamTypeClasses
+  - MultiWayIf
+  - NamedFieldPuns
+  - NoImplicitPrelude
+  - OverloadedStrings
+  - PartialTypeSignatures
+  - PatternGuards
+  - PolyKinds
+  - RankNTypes
+  - RecordWildCards
+  - ScopedTypeVariables
+  - StandaloneDeriving
+  - TupleSections
+  - TypeFamilies
+  - TypeSynonymInstances
+  - ViewPatterns
+  # Others
+  - OverloadedRecordDot
+  # - OverloadedRecordUpdate
+  # - RebindableSyntax
+  - NoFieldSelectors
+  - DuplicateRecordFields
+  - DeriveAnyClass
+
+library:
+  source-dirs: src
+
+executables:
+  rpc-gateway-exec:
+    main:                Main.hs
+    source-dirs:         app
+    ghc-options:
+      # - -Werror # For production, you should can use the flag that turns all warnings into errors
+      - -threaded
+      - -rtsopts
+      - -with-rtsopts=-N
+    dependencies:
+      - rpc-gateway
+
+tests:
+  rpc-gateway-test:
+    main:                Spec.hs
+    source-dirs:         test
+    ghc-options:
+      - -threaded
+      - -rtsopts
+      - -with-rtsopts=-N
+    dependencies:
+      - rpc-gateway
